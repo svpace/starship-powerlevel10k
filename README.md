@@ -1,0 +1,1 @@
+# starship-powerlevel10k
