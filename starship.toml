@@ -1,0 +1,478 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = false
+
+format = """
+$os\
+($username@$hostname)\
+$directory\
+$git_branch\
+$git_status\
+[ ](fg:prev_bg)\
+$line_break\
+$character\
+"""
+
+# Unused left
+###############
+# $git_commit\
+# $git_state\
+# $git_metrics\
+
+# Unused right
+###############
+# (\
+# [](fg:prev_bg bg:color_java_version_bg)\
+# $c\
+# $cpp\
+# $rust\
+# $golang\
+# $nodejs\
+# $php\
+# $java\
+# $kotlin\
+# $haskell\
+# $python\
+# )(\
+# [](fg:prev_bg bg:next_bg)\
+# $docker_context\
+# $conda\
+# $pixi\
+# )(\
+# []( fg:prev_bg bg:color_bg1)\
+# $time\
+# )\
+
+right_format = """
+$cmd_duration\
+$jobs\
+$direnv\
+(_asdf)\
+(virtualenv)\
+$conda\
+(_pyenv)\
+(_goenv)\
+(_nvm)\
+(_nodeenv)\
+$nodejs\
+$golang\
+$rust\
+$dotnet\
+$php\
+(_laravel)\
+$java\
+$package\
+(_rbenv)\
+(_rvm)\
+(_fvm)\
+(_luaenv)\
+(_jenv)\
+(_plenv)\
+(_perlbrew)\
+(_phpenv)\
+(_scalaenv)\
+(_haskell_stack)\
+$kubernetes\
+$terraform\
+$aws\
+$azure\
+$gcloud\
+(_toolbox)\
+(_nordvpn)\
+(_ranger)\
+(_nnn)\
+(_lf)\
+(_explr)\
+(_vim_shell)\
+(_midnight_commander)\
+$nix_shell\
+(_chezmoi_shell)\
+(_vpn_ip)\
+(_load)\
+(_disk_usage)\
+$memory_usage\
+(_swap)\
+(_todo)\
+(_timewarrior)\
+(_taskwarrior)\
+(_cpu_arch)\
+$time\
+$localip\
+(_public_ip)\
+(_proxy)\
+$battery\
+(_wifi)\
+$status\
+[](fg:prev_bg)\
+"""
+
+# [](fg:prev_bg)\
+# """
+
+palette = 'powerlevel10k'
+
+[os]
+disabled = false
+style = "bg:color_os_icon_bg fg:color_os_icon_fg"
+format = "[](fg:color_os_icon_bg)[ $symbol ]($style)"
+
+[os.symbols]
+Windows = "󰍲"
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+EndeavourOS = ""
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+Pop = ""
+
+[username]
+show_always = false
+style_user = "fg:color_os_icon_fg bg:color_os_icon_bg"
+style_root = "fg:color_os_icon_fg bg:color_os_icon_bg "
+format = '[ $user ]($style)'
+
+[directory]
+style = "fg:color_dir_fg bg:color_dir_bg"
+format = "[](fg:prev_bg bg:bg:color_dir_bg)[  $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Developer" = "󰲋 "
+
+[git_branch]
+symbol = ""
+style = "fg:color_vcs_clean_fg bg:color_vcs_clean_bg"
+format = '[](fg:prev_bg bg:color_vcs_clean_bg)[ $symbol $branch ]($style)'
+
+[git_status]
+style = "fg:color_vcs_clean_fg bg:color_vcs_clean_bg"
+format = '[$all_status$ahead_behind]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:color_java_version_bg"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_java_version_bg)]($style)'
+
+[c]
+symbol = ""
+style = "bg:color_java_version_bg"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_java_version_bg)]($style)'
+
+[cpp]
+symbol = ""
+style = "bg:color_java_version_bg"
+format = '[[ $symbol( $version) ](bg:color_java_version_bg)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:color_java_version_bg"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_java_version_bg)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:color_java_version_bg"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_java_version_bg)]($style)'
+
+[php]
+symbol = ""
+style = "bg:color_java_version_bg"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_java_version_bg)]($style)'
+
+[java]
+symbol = ""
+style = "fg:color_java_version_fg bg:color_java_version_bg"
+format = '[ $symbol( $version) ]($style)'
+
+[kotlin]
+symbol = ""
+style = "bg:color_java_version_bg"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_java_version_bg)]($style)'
+
+[haskell]
+symbol = ""
+style = "bg:color_java_version_bg"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_java_version_bg)]($style)'
+
+[python]
+symbol = ""
+style = "bg:color_java_version_bg"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_java_version_bg)]($style)'
+
+[docker_context]
+symbol = ""
+style = "bg:color_bg3"
+format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
+
+[conda]
+style = "bg:color_bg3"
+format = '[[ $symbol( $environment) ](fg:#83a598 bg:color_bg3)]($style)'
+
+[pixi]
+style = "bg:color_bg3"
+format = '[[ $symbol( $version)( $environment) ](fg:color_fg0 bg:color_bg3)]($style)'
+
+[line_break]
+disabled = true
+
+[character]
+disabled = true
+
+[time]
+disabled = true
+time_format = "%R"
+style = "bg:color_bg1"
+format = '[[  $time ](fg:color_fg0 bg:color_bg1)]($style)'
+
+
+[cmd_duration]
+style = "fg:color_command_execution_time_fg bg:color_command_execution_time_bg"
+format = "([](fg:color_command_execution_time_bg bg:prev_bg)[$duration  ]($style))"
+
+[jobs]
+symbol = "+ "
+number_threshold = 1
+symbol_threshold = 1
+style = "fg:color_jobs_fg bg:color_jobs_bg"
+format = "[](fg:color_jobs_bg bg:prev_bg)[$symbol$number]($style) "
+
+[status]
+success_style = 'bold fg:color_status_ok_fg bg:color_status_ok_bg'
+failure_style = 'bold fg:color_status_error_fg bg:color_status_error_bg'
+symbol = '[](fg:color_status_error_bg bg:prev_bg)✘'
+not_found_symbol = '[](fg:color_status_error_bg bg:prev_bg)🔍︎'
+sigint_symbol = '[](fg:color_status_error_bg bg:prev_bg)⚡︎'
+signal_symbol = '[](fg:color_status_error_bg bg:prev_bg)⚡︎'
+success_symbol = '[](fg:color_status_ok_bg bg:prev_bg)✔'
+format = '[$symbol( $common_meaning$signal_name$maybe_int)]($style)'
+map_symbol = true
+pipestatus = true
+pipestatus_format = '[$symbol( $pipestatus)( $common_meaning$signal_name$maybe_int]($style)'
+pipestatus_segment_format = '$status'
+disabled = false
+
+
+[palettes.powerlevel10k]
+color_multiline_first_prompt_gap_bg = ""
+color_multiline_newline_prompt_gap_bg = ""
+color_multiline_first_prompt_gap_fg = "242"
+color_os_icon_fg = "232"
+color_os_icon_bg = "7"
+color_prompt_char_bg = ""
+color_prompt_char_ok_fg = "76"
+color_prompt_char_error_fg = "196"
+color_dir_bg = "4"
+color_dir_fg = "254"
+color_dir_shortened_fg = "250"
+color_dir_anchor_fg = "255"
+color_vcs_clean_fg = "232"
+color_vcs_clean_bg = "2"
+color_vcs_modified_bg = "3"
+color_vcs_untracked_bg = "2"
+color_vcs_conflicted_bg = "3"
+color_vcs_loading_bg = "8"
+color_status_ok_fg = "2"
+color_status_ok_bg = "0"
+color_status_ok_pipe_fg = "2"
+color_status_ok_pipe_bg = "0"
+color_status_error_fg = "3"
+color_status_error_bg = "1"
+color_status_error_signal_fg = "3"
+color_status_error_signal_bg = "1"
+color_status_error_pipe_fg = "3"
+color_status_error_pipe_bg = "1"
+color_command_execution_time_fg = "0"
+color_command_execution_time_bg = "3"
+color_jobs_fg = "6"
+color_jobs_bg = "0"
+color_direnv_fg = "3"
+color_direnv_bg = "0"
+color_asdf_fg = "0"
+color_asdf_bg = "7"
+color_asdf_ruby_fg = "0"
+color_asdf_ruby_bg = "1"
+color_asdf_python_fg = "0"
+color_asdf_python_bg = "4"
+color_asdf_golang_fg = "0"
+color_asdf_golang_bg = "4"
+color_asdf_nodejs_fg = "0"
+color_asdf_nodejs_bg = "2"
+color_asdf_rust_fg = "0"
+color_asdf_rust_bg = "208"
+color_asdf_dotnet_core_fg = "0"
+color_asdf_dotnet_core_bg = "5"
+color_asdf_flutter_fg = "0"
+color_asdf_flutter_bg = "4"
+color_asdf_lua_fg = "0"
+color_asdf_lua_bg = "4"
+color_asdf_java_fg = "1"
+color_asdf_java_bg = "7"
+color_asdf_perl_fg = "0"
+color_asdf_perl_bg = "4"
+color_asdf_erlang_fg = "0"
+color_asdf_erlang_bg = "1"
+color_asdf_elixir_fg = "0"
+color_asdf_elixir_bg = "5"
+color_asdf_postgres_fg = "0"
+color_asdf_postgres_bg = "6"
+color_asdf_php_fg = "0"
+color_asdf_php_bg = "5"
+color_asdf_haskell_fg = "0"
+color_asdf_haskell_bg = "3"
+color_asdf_julia_fg = "0"
+color_asdf_julia_bg = "2"
+color_nordvpn_fg = "7"
+color_nordvpn_bg = "4"
+color_ranger_fg = "3"
+color_ranger_bg = "0"
+color_nnn_fg = "0"
+color_nnn_bg = "6"
+color_lf_fg = "0"
+color_lf_bg = "6"
+color_xplr_fg = "0"
+color_xplr_bg = "6"
+color_vim_shell_fg = "0"
+color_vim_shell_bg = "2"
+color_midnight_commander_fg = "3"
+color_midnight_commander_bg = "0"
+color_nix_shell_fg = "0"
+color_nix_shell_bg = "4"
+color_chezmoi_shell_fg = "0"
+color_chezmoi_shell_bg = "4"
+color_disk_usage_normal_fg = "3"
+color_disk_usage_normal_bg = "0"
+color_disk_usage_warning_fg = "0"
+color_disk_usage_warning_bg = "3"
+color_disk_usage_critical_fg = "7"
+color_disk_usage_critical_bg = "1"
+color_vi_mode_fg = "0"
+color_vi_mode_normal_bg = "2"
+color_vi_mode_visual_bg = "4"
+color_vi_mode_overwrite_bg = "3"
+color_vi_mode_insert_fg = "8"
+color_ram_fg = "0"
+color_ram_bg = "3"
+color_swap_fg = "0"
+color_swap_bg = "3"
+color_load_normal_fg = "0"
+color_load_normal_bg = "2"
+color_load_warning_fg = "0"
+color_load_warning_bg = "3"
+color_load_critical_fg = "0"
+color_load_critical_bg = "1"
+color_todo_fg = "0"
+color_todo_bg = "8"
+color_timewarrior_fg = "255"
+color_timewarrior_bg = "8"
+color_taskwarrior_fg = "0"
+color_taskwarrior_bg = "6"
+color_cpu_arch_fg = "0"
+color_cpu_arch_bg = "3"
+color_context_root_fg = "1"
+color_context_root_bg = "0"
+color_context_fg = "3"
+color_context_bg = "0"
+color_virtualenv_fg = "0"
+color_virtualenv_bg = "4"
+color_anaconda_fg = "0"
+color_anaconda_bg = "4"
+color_pyenv_fg = "0"
+color_pyenv_bg = "4"
+color_goenv_fg = "0"
+color_goenv_bg = "4"
+color_nodenv_fg = "2"
+color_nodenv_bg = "0"
+color_nvm_fg = "0"
+color_nvm_bg = "5"
+color_nodeenv_fg = "2"
+color_nodeenv_bg = "0"
+color_node_version_fg = "7"
+color_node_version_bg = "2"
+color_go_version_fg = "255"
+color_go_version_bg = "2"
+color_rust_version_fg = "0"
+color_rust_version_bg = "208"
+color_dotnet_version_fg = "7"
+color_dotnet_version_bg = "5"
+color_php_version_fg = "0"
+color_php_version_bg = "5"
+color_laravel_version_fg = "1"
+color_laravel_version_bg = "7"
+color_rbenv_fg = "0"
+color_rbenv_bg = "1"
+color_java_version_fg = "1"
+color_java_version_bg = "7"
+color_package_fg = "0"
+color_package_bg = "6"
+color_rvm_fg = "0"
+color_rvm_bg = "240"
+color_fvm_fg = "0"
+color_fvm_bg = "4"
+color_luaenv_fg = "0"
+color_luaenv_bg = "4"
+color_jenv_fg = "1"
+color_jenv_bg = "7"
+color_plenv_fg = "0"
+color_plenv_bg = "4"
+color_perlbrew_fg = "67"
+color_phpenv_fg = "0"
+color_phpenv_bg = "5"
+color_scalaenv_fg = "0"
+color_scalaenv_bg = "1"
+color_haskell_stack_fg = "0"
+color_haskell_stack_bg = "3"
+color_terraform_other_fg = "4"
+color_terraform_other_bg = "0"
+color_terraform_version_fg = "4"
+color_terraform_version_bg = "0"
+color_kubecontext_default_fg = "7"
+color_kubecontext_default_bg = "5"
+color_aws_default_fg = "7"
+color_aws_default_bg = "1"
+color_aws_eb_env_fg = "2"
+color_aws_eb_env_bg = "0"
+color_azure_fg = "7"
+color_azure_bg = "4"
+color_gcloud_fg = "7"
+color_gcloud_bg = "4"
+color_google_app_cred_default_fg = "7"
+color_google_app_cred_default_bg = "4"
+color_toolbox_fg = "0"
+color_toolbox_bg = "3"
+color_public_ip_fg = "7"
+color_public_ip_bg = "0"
+color_vpn_ip_fg = "0"
+color_vpn_ip_bg = "6"
+color_ip_bg = "4"
+color_ip_fg = "0"
+color_proxy_fg = "4"
+color_proxy_bg = "0"
+color_battery_low_fg = "1"
+color_battery_charged_fg = "2"
+color_battery_charging_fg = "2"
+color_battery_disconnected_fg = "3"
+color_battery_bg = "0"
+color_wifi_fg = "0"
+color_wifi_bg = "4"
+color_time_fg = "0"
+color_time_bg = "7"
+color_example_fg = "3"
+color_example_bg = "1"
